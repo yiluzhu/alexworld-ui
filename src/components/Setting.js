@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 export default class Setting extends Component {
 
@@ -8,52 +9,43 @@ export default class Setting extends Component {
   }
 
   changeDifficulty = (event) => {
-    this.setState({difficulty: event.target.value})
+    this.setState({difficulty: event.target.value});
+    console.log('change diff', event.target.value)
   }
 
   changeNumber = (event) => {
-    this.setState({number: event.target.value})
+    this.setState({number: event.target.value});
+    console.log('change nubmer', event.target.value)
   }
 
-  handleSubmit = (event) => {
-    let params = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: {
-        difficulty: this.state.difficulty,
-        number: this.state.number,
-      }
-    }
-    fetch('localhost:5000/questions', params)
-      .then(response => response.json())
-      .then(data => this)
-    console.log('submitted bla')
-  }
 
   render() {
     return (
       <div>
-        <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1></center>
-        <form onSubmit={this.handleSubmit} >
-          <center>
-            <h3>
-              <input type="radio" value="easy" onChange={this.changeDifficulty} />Easy
-              <input type="radio" value="medium" onChange={this.changeDifficulty} />Medium
-              <input type="radio" value="hard" onChange={this.changeDifficulty} />Hard
-              <input type="radio" value="extreme" onChange={this.changeDifficulty} />Extreme
-            </h3>
-            <h5>How many questions do you want?
-              <select name="number">
-                <option value='1' onChange={this.changeNumber}>1</option>
-                <option value="2" onChange={this.changeNumber}>2</option>
-                <option value="3" onChange={this.changeNumber}>3</option>
-                <option value="4" onChange={this.changeNumber}>4</option>
-                <option value="5" onChange={this.changeNumber}>5</option>
-              </select>
-            </h5>
+        <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1>
+          <h3>
+            <input type="radio" name='difficulty' value="easy" onChange={this.changeDifficulty} />Easy
+            <input type="radio" name='difficulty' value="medium" onChange={this.changeDifficulty} />Medium
+            <input type="radio" name='difficulty' value="hard" onChange={this.changeDifficulty} />Hard
+            <input type="radio" name='difficulty' value="extreme" onChange={this.changeDifficulty} />Extreme
+          </h3>
+          <h5>How many questions do you want?
+            <select name="number" onChange={this.changeNumber}>
+              {[...Array(10).keys()].map(value => {
+                return <option key={value + 1} value={value + 1}>{value + 1}</option>
+              })}
+            </select>
+          </h5>
+          <Link to={{
+            pathname: '/question',
+            state: {
+              difficulty: this.state.difficulty,
+              number: this.state.number,
+            }
+          }}>
             <input type="submit" value="Start" />
-          </center>
-        </form>
+          </Link>
+        </center>
       </div>
     )
   }
