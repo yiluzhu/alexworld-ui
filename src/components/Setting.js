@@ -23,10 +23,12 @@ export default class Setting extends Component {
       <div>
         <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1>
           <h3>
-            <input type="radio" name='difficulty' value="easy" onChange={this.changeDifficulty} />Easy
-            <input type="radio" name='difficulty' value="medium" onChange={this.changeDifficulty} />Medium
-            <input type="radio" name='difficulty' value="hard" onChange={this.changeDifficulty} />Hard
-            <input type="radio" name='difficulty' value="extreme" onChange={this.changeDifficulty} />Extreme
+            <div className='mx-auto'>
+              <input type="radio" name='difficulty' value="easy" onChange={this.changeDifficulty} checked />Easy
+              <input type="radio" name='difficulty' value="medium" onChange={this.changeDifficulty} />Medium
+              <input type="radio" name='difficulty' value="hard" onChange={this.changeDifficulty} />Hard
+              <input type="radio" name='difficulty' value="extreme" onChange={this.changeDifficulty} />Extreme
+            </div>
           </h3>
           <h5>How many questions do you want?
             <select name="number" onChange={this.changeNumber}>

@@ -4,7 +4,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Setting from './components/Setting';
 import Question from './components/Question';
-import Result from './components/Result';
 
 
 class App extends Component {
@@ -15,7 +14,6 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Setting} />
             <Route path='/question' component={Question} />
-            <Route path='/result' component={Result} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>
