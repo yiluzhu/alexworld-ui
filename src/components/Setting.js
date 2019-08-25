@@ -18,7 +18,6 @@ export default class Setting extends Component {
     console.log('change nubmer', event.target.value)
   }
 
-
   render() {
     return (
       <div>
