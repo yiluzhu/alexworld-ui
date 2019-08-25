@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 export default class Question extends Component {
   state = {
     questions: [],
-    timeTaken: 0,
+    startTime: 0,
     difficulty: '',
     number: 0
   }
 
   componentDidMount() {
-    console.log('class Question componentDidMount')
     const difficulty = this.props.location.state.difficulty;
     const number = parseInt(this.props.location.state.number);
     this.setState({difficulty: difficulty, number: number});
-    console.log('diff', difficulty, 'number', number);
+    console.log('Question - componentDidMount - difficulty', difficulty, 'number', number);
     this.getQuestions(difficulty, number)
   }
 
@@ -28,7 +31,7 @@ export default class Question extends Component {
     };
     fetch('http://localhost:5000/questions', params)
       .then(response => response.json())
-      .then(data => this.setState({questions: data}))
+      .then(data => this.setState({questions: data, startTime: Date.now()}))
   }
 
   collectAnswers = (event) => {
@@ -39,7 +42,7 @@ export default class Question extends Component {
       state: {
         questions: this.state.questions,
         answers: answers,
-        timeTaken: this.state.timeTaken,
+        timeTaken: Date.now() - this.state.startTime,
         difficulty: this.state.difficulty,
         number: this.state.number
       }
@@ -50,14 +53,26 @@ export default class Question extends Component {
     return (
       <div>
         <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1></center>
+        <Link to='/'>
+          <div className='text-right'>HOME</div>
+        </Link>
         <h5>difficulty: { this.state.difficulty }</h5>
         <h5>number: { this.state.number }</h5>
         <div className='text-center'>
           <form onSubmit={this.collectAnswers}>
             {this.state.questions.map((question, idx ) => {
-              return <h3 key={idx}>{question}=<input name={idx} type="text" /></h3>
+              return (
+                <h3 key={idx}>
+                  <Container>
+                    <Row>
+                      <Col xs={6} className='text-left'>{question}</Col>
+                      <Col className='text-left'>= <input name={idx} type="text" size='5'/></Col>
+                    </Row>
+                  </Container>
+                </h3>
+              )
             })}
-              <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
           </form>
         </div>
       </div>

@@ -10,12 +10,12 @@ export default class Setting extends Component {
 
   changeDifficulty = (event) => {
     this.setState({difficulty: event.target.value});
-    console.log('change diff', event.target.value)
+    console.log('Setting difficulty:', event.target.value)
   }
 
   changeNumber = (event) => {
     this.setState({number: event.target.value});
-    console.log('change nubmer', event.target.value)
+    console.log('Setting number:', event.target.value)
   }
 
   render() {
