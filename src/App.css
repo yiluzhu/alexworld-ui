@@ -35,3 +35,11 @@
 .text-blue {
   background-color: cyan;
 }
+
+input[type="radio"]{
+  margin: 0 10px 0 30px;
+}
+
+.dropdown {
+  margin: 0 0 0 20px;
+}

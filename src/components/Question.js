@@ -12,7 +12,8 @@ export default class Question extends Component {
     result: [],
     startTime: 0,
     difficulty: '',
-    number: 0
+    number: 0,
+    showAnswerFlag: false
   }
 
   componentDidMount() {
@@ -61,7 +62,7 @@ export default class Question extends Component {
         result: data.result}))
   }
 
-  getResultEmoji(idx) {
+  getResultEmoji = (idx) => {
     if (this.state.result.length === 0) {
       return ''
     } else if (this.state.result[idx]) {
@@ -71,11 +72,31 @@ export default class Question extends Component {
     }
   }
   
-  displayTimeTaken() {
+  displayTimeTaken = () => {
     if (this.state.timeTaken > 0) {
       return (
-        <h5 className='text-right'>time taken: { this.state.timeTaken } milliseconds</h5>
+        <h5 className='text-right'>time taken: { this.state.timeTaken / 1000 } seconds</h5>
       )
+    } else {
+      return ''
+    }
+  }
+
+  showAnswers = () => {
+    this.setState({showAnswerFlag: !this.state.showAnswerFlag})
+  }
+
+  showAnswerText = () => {
+    if (this.state.showAnswerFlag) {
+      return 'Hide Answers'
+    } else {
+      return 'Show Answers'
+    }
+  }
+
+  getCorrectAnswers = (idx) => {
+    if (this.state.showAnswerFlag) {
+      return this.state.correctAnswers[idx]
     } else {
       return ''
     }
@@ -92,7 +113,7 @@ export default class Question extends Component {
         <h5>number: { this.state.number }</h5>
         <div className='text-center'>
           <form onSubmit={this.checkResult}>
-            {this.state.questions.map((question, idx ) => {
+            {this.state.questions.map((question, idx) => {
               return (
                 <h3 key={idx}>
                   <Container>
@@ -100,13 +121,18 @@ export default class Question extends Component {
                       <Col xs={6} className='text-left'>{question}</Col>
                       <Col className='text-left'>= <input name={idx} type="text" size='5'/></Col>
                       <Col xs={1}> {this.getResultEmoji(idx)}</Col>
+                      <Col >{this.getCorrectAnswers(idx)}</Col>
                     </Row>
                   </Container>
                 </h3>
               )
             })}
+            <br/><br/><br/>
             <input type="submit" value="Submit" />
           </form>
+          <br/> 
+          <button onClick={this.showAnswers}>{this.showAnswerText()}</button>
+          <br/>
         </div>
         {this.displayTimeTaken()}
       </div>

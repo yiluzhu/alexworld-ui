@@ -22,21 +22,24 @@ export default class Setting extends Component {
     return (
       <div>
         <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1>
+        <br/>
           <h3>
             <div className='mx-auto'>
-              <input type="radio" name='difficulty' value="easy" onChange={this.changeDifficulty} checked />Easy
+              <input type="radio" name='difficulty' value="easy" onChange={this.changeDifficulty} />Easy
               <input type="radio" name='difficulty' value="medium" onChange={this.changeDifficulty} />Medium
               <input type="radio" name='difficulty' value="hard" onChange={this.changeDifficulty} />Hard
               <input type="radio" name='difficulty' value="extreme" onChange={this.changeDifficulty} />Extreme
             </div>
           </h3>
+          <br/>
           <h5>How many questions do you want?
-            <select name="number" onChange={this.changeNumber}>
+            <select className='dropdown' name="number" onChange={this.changeNumber}>
               {[...Array(10).keys()].map(value => {
                 return <option key={value + 1} value={value + 1}>{value + 1}</option>
               })}
             </select>
           </h5>
+          <br/>
           <Link to={{
             pathname: '/question',
             state: {
@@ -46,6 +49,8 @@ export default class Setting extends Component {
           }}>
             <input type="submit" value="Start" />
           </Link>
+          <br/><br/><br/>
+          <img src="/head.png" alt="head"></img>
         </center>
       </div>
     )
