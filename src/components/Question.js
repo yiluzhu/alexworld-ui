@@ -4,6 +4,13 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+
+var rootUrl = process.env.ROOT_URL
+if (rootUrl === undefined) {
+  rootUrl = 'http://localhost:5000'
+}
+
+
 export default class Question extends Component {
   state = {
     questions: [],
@@ -35,7 +42,7 @@ export default class Question extends Component {
         number: number
       })
     };
-    fetch('http://localhost:5000/questions', params)
+    fetch(rootUrl + '/questions', params)
       .then(response => response.json())
       .then(data => this.setState({questions: data, startTime: Date.now()}))
   }
@@ -54,7 +61,7 @@ export default class Question extends Component {
         submittedAnswers: submittedAnswers
       })
     };
-    fetch('http://localhost:5000/result', params)
+    fetch(rootUrl + '/result', params)
       .then(response => response.json())
       .then(data => this.setState({
         submittedAnswers: submittedAnswers, 

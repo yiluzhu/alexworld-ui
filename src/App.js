@@ -7,6 +7,10 @@ import Question from './components/Question';
 
 
 class App extends Component {
+  componentDidMount(){
+    document.title = "Alex Maths World"
+  }
+
   render() {
     return (
       <BrowserRouter>

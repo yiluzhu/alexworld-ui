@@ -3,6 +3,7 @@
 FROM node:12-slim
 
 # Create and change to the app directory.
+ENV ROOT_URL https://be-4imylu4s7a-ew.a.run.app
 WORKDIR /usr/src/app
 
 # Copy application dependency manifests to the container image.
