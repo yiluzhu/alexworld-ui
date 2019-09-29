@@ -75,7 +75,7 @@ export default class Question extends Component {
   displayTimeTaken = () => {
     if (this.state.timeTaken > 0) {
       return (
-        <h5 className='text-right'>time taken: { this.state.timeTaken / 1000 } seconds</h5>
+        <h5 className='text-right mt'>Time taken: {(this.state.timeTaken / 1000).toFixed(1) } seconds</h5>
       )
     } else {
       return ''
@@ -107,10 +107,10 @@ export default class Question extends Component {
       <div>
         <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1></center>
         <Link to='/'>
-          <div className='text-right'>START AGAIN</div>
+          <div className='text-right mt'>START AGAIN</div>
         </Link>
-        <h5>difficulty: { this.state.difficulty }</h5>
-        <h5>number: { this.state.number }</h5>
+        <h5 className='mt'>Difficulty: { this.state.difficulty }</h5>
+        <h5 className='mt'>Number: { this.state.number }</h5>
         <div className='text-center'>
           <form onSubmit={this.checkResult}>
             {this.state.questions.map((question, idx) => {

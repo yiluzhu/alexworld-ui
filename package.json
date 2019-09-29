@@ -1,6 +1,7 @@
 {
   "name": "alexworld-ui",
   "version": "0.1.0",
+  "description": "UI for Alex maths world",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",

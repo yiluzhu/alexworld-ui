@@ -43,3 +43,7 @@ input[type="radio"]{
 .dropdown {
   margin: 0 0 0 20px;
 }
+
+.mt {
+  margin: 0 20px 0 20px;
+}
