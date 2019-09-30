@@ -13,9 +13,6 @@ COPY package*.json ./
 # Install production dependencies.
 RUN npm install
 
-# Set environment variables
-RUN export ROOT_URL=https://be-4imylu4s7a-ew.a.run.app
-
 # Copy local code to the container image.
 COPY . ./
 

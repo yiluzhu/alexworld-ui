@@ -4,12 +4,18 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-
-var rootUrl = process.env.ROOT_URL
-if (rootUrl === undefined) {
-  rootUrl = 'http://localhost:5000'
+var rootUrl;
+switch (process.env.NODE_ENV) {
+  case 'development':
+    rootUrl = 'http://localhost:5000';
+    break;
+  case 'production':
+    rootUrl = 'https://be-4imylu4s7a-ew.a.run.app';
+    break;
+  default:
+    console.error('Unknown NODE_ENV: ' + process.env.NODE_ENV)
 }
-
+console.log('rootUrl is: ' + rootUrl)
 
 export default class Question extends Component {
   state = {
