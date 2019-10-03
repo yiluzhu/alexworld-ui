@@ -50,7 +50,7 @@ export default class Setting extends Component {
             <input type="submit" value="Start" />
           </Link>
           <br/><br/><br/>
-          <img src="/head.png" alt="head"></img>
+          <img src="/alex.jpg" alt="face"></img>
         </center>
       </div>
     )
