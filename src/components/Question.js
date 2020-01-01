@@ -85,15 +85,7 @@ export default class Question extends Component {
   }
 
   showAnswers = () => {
-    this.setState({showAnswerFlag: !this.state.showAnswerFlag})
-  }
-
-  showAnswerText = () => {
-    if (this.state.showAnswerFlag) {
-      return 'Hide Answers'
-    } else {
-      return 'Show Answers'
-    }
+    this.setState({showAnswerFlag: true})
   }
 
   getCorrectAnswers = (idx) => {
@@ -121,7 +113,7 @@ export default class Question extends Component {
                   <Container>
                     <Row>
                       <Col xs={6} className='text-left'>{question}</Col>
-                      <Col className='text-left'>= <input name={idx} type="text" size='5'/></Col>
+                      <Col className='text-left'>= <input name={idx} type="text" size='5' disabled={this.state.showAnswerFlag} /></Col>
                       <Col xs={1}> {this.getResultEmoji(idx)}</Col>
                       <Col >{this.getCorrectAnswers(idx)}</Col>
                     </Row>
@@ -130,10 +122,10 @@ export default class Question extends Component {
               )
             })}
             <br/><br/><br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" disabled={this.state.showAnswerFlag}/>
           </form>
           <br/> 
-          <button onClick={this.showAnswers}>{this.showAnswerText()}</button>
+          <button onClick={this.showAnswers}>Show Answers</button>
           <br/>
         </div>
         {this.displayTimeTaken()}
