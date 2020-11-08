@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Setting from './components/Setting';
 import Question from './components/Question';
-import Comment from './components/comment/CommentInput';
+import Comment from './components/comment/Comment';
 
 
 class App extends Component {

@@ -6,7 +6,7 @@ export default class CommentInput extends Component {
     username: '',
     content: ''
   }
-  
+
   handleUsernameChange = (event) => {
     this.setState({username: event.target.value})
   }
@@ -16,13 +16,18 @@ export default class CommentInput extends Component {
   }
 
   handleSubmit = () => {
-
+    if (this.props.onSubmit) {
+      this.props.onSubmit({
+        username: this.state.username, 
+        content: this.state.content
+      })
+    }
+    this.setState({content: ''})
   }
 
   render() {
     return (
       <div>
-        <center><h1 className='text-blue'>Welcome to Alex's Maths World</h1></center>
         <div className='comment-input'>
           <div className='comment-field'>
             <span className='comment-field-name'>Name:</span>

@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import Comment from './Comment'
 
 export default class CommentList extends Component {
-  props = {
-    comments: []
-  }
 
   render() {
     return (
@@ -12,9 +8,9 @@ export default class CommentList extends Component {
         {this.props.comments.map((comment, i) =>
           <div className='comment' key={i}>
             <div className='comment-user'>
-              <span>{this.props.comment.username} </span>：
+              <span>{comment.username} </span>：
             </div>
-            <p>{this.props.comment.content}</p>
+            <p>{comment.content}</p>
           </div>
         )}
       </div>
