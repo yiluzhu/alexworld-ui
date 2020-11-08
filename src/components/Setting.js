@@ -51,6 +51,10 @@ export default class Setting extends Component {
           </Link>
           <br/><br/><br/>
           <img src="/alex.jpg" alt="face"></img>
+          <br/><br/><br/>
+          <Link to='/comment'>
+            <div>LEAVE COMMENT</div>
+          </Link>
         </center>
       </div>
     )

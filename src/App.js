@@ -4,6 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Setting from './components/Setting';
 import Question from './components/Question';
+import Comment from './components/comment/CommentInput';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Setting} />
             <Route path='/question' component={Question} />
+            <Route path='/comment' component={Comment} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>
