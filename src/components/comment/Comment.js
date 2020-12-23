@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import CommentInput from './CommentInput'
 import CommentList from './CommentList'
+import {rootUrl} from '../../Config'
 
 
 export default class Comment extends Component {
@@ -9,19 +10,31 @@ export default class Comment extends Component {
     comments: []
   }
 
-  // componentDidMount() {
-  //   fetch(rootUrl + '/comments')
-  //   .then(response => response.json())
-  //   .then(data => this.setState({
-  //     comments: data.comments}))
-  // }
+  componentDidMount() {
+    this.fetch_comments()
+  }
 
   handleSubmitComment = (comment) => {
-    // this.props.comments.push(comment)
-    this.state.comments.push(comment)
-    this.setState({
-      comments: this.state.comments
-    })
+    const params = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: comment.name,
+        content: comment.content
+      })
+    };
+    fetch(rootUrl + '/comments', params)
+      .then(response => response.json())
+      .then(data => console.log('save comments:', data))
+
+    this.fetch_comments()
+  }
+
+  fetch_comments = () => {
+    fetch(rootUrl + '/comments')
+    .then(response => response.json())
+    .then(data => this.setState({
+      comments: data.comments}))
   }
 
   render() {

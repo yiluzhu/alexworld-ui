@@ -7,10 +7,13 @@ export default class CommentList extends Component {
       <div>
         {this.props.comments.map((comment, i) =>
           <div className='comment' key={i}>
-            <div className='comment-user'>
-              <span>{comment.username} </span>：
+            <div className='comment-datetime'> 
+              {comment.timestamp}
             </div>
-            <p>{comment.content}</p>
+            <div className='comment-user'>
+              <span>{comment.name} </span>：
+              <p>{comment.content}</p>
+            </div>
           </div>
         )}
       </div>

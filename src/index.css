@@ -88,7 +88,7 @@ code {
 }
 
 .comment {
-  display: flex;
+  /* display: flex; */
   border-bottom: 1px solid #f1f1f1;
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -96,7 +96,12 @@ code {
 }
 
 .comment .comment-user {
+  display: flex;
   flex-shrink: 0;
+}
+
+.comment .comment-datetime {
+  text-align: right;
 }
 
 .comment span {
@@ -104,7 +109,7 @@ code {
   font-style: italic;
 }
 
-.comment p {
+.comment .comment-user p {
   margin: 0;
   /*text-indent: 2em;*/
 }

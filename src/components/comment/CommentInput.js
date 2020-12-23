@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 
 export default class CommentInput extends Component {
   state = {
-    username: '',
+    name: '',
     content: ''
   }
 
-  handleUsernameChange = (event) => {
-    this.setState({username: event.target.value})
+  handleNameChange = (event) => {
+    this.setState({name: event.target.value})
   }
 
   handleContentChange = (event) => {
@@ -18,7 +18,7 @@ export default class CommentInput extends Component {
   handleSubmit = () => {
     if (this.props.onSubmit) {
       this.props.onSubmit({
-        username: this.state.username, 
+        name: this.state.name, 
         content: this.state.content
       })
     }
@@ -32,7 +32,7 @@ export default class CommentInput extends Component {
           <div className='comment-field'>
             <span className='comment-field-name'>Name:</span>
             <div className='comment-field-input'>
-              <input value={this.state.username} onChange={this.handleUsernameChange} />
+              <input value={this.state.name} onChange={this.handleNameChange} />
             </div>
           </div>
           <div className='comment-field'>
