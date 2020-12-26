@@ -1,3 +1,4 @@
 
-// export var rootUrl = 'https://backend-dot-alex-maths-world.appspot.com';  
-export var rootUrl = 'http://localhost:5000';
+export var rootUrl = process.env.BACKEND_URL;
+// export var rootUrl = 'http://localhost:5000';
+console.log('backend url is', rootUrl)
