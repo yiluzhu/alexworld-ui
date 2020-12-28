@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {rootUrl} from '../Config'
+
 
 export default class Setting extends Component {
 
   state = {
     difficulty: 'easy',
     number: 1,
+  }
+
+  componentDidMount () {
+    this.getBackendVersion()
   }
 
   changeDifficulty = (event) => {
@@ -16,6 +22,17 @@ export default class Setting extends Component {
   changeNumber = (event) => {
     this.setState({number: event.target.value});
     console.log('Setting number:', event.target.value)
+  }
+
+  getBackendVersion = () => {
+    const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'},
+    };
+
+    fetch(rootUrl + '/version', params)
+      .then(response => response.json())
+      .then(data => console.log('Backend version is', data))
   }
 
   render() {
