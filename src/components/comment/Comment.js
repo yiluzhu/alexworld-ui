@@ -25,16 +25,16 @@ export default class Comment extends Component {
     };
     fetch(rootUrl + '/comments', params)
       .then(response => response.json())
-      .then(data => console.log('save comments:', data))
-
-    this.fetch_comments()
+      .then(data => {
+        console.log('save comments:', data);
+        this.fetch_comments()
+      })
   }
 
   fetch_comments = () => {
     fetch(rootUrl + '/comments')
     .then(response => response.json())
-    .then(data => this.setState({
-      comments: data.comments}))
+    .then(data => this.setState({comments: data.comments}))
   }
 
   render() {
