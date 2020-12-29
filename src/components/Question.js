@@ -39,7 +39,11 @@ export default class Question extends Component {
     };
     fetch(rootUrl + '/questions', params)
       .then(response => response.json())
-      .then(data => this.setState({questions: data, startTime: Date.now()}))
+      .then(data => this.setState({
+        questions: data.questions,
+        correctAnswers: data.correct_answers, 
+        startTime: Date.now()
+      }))
   }
 
   checkResult = (event) => {
@@ -47,7 +51,10 @@ export default class Question extends Component {
     this.setState({timeTaken: Date.now() - this.state.startTime});
     const submittedAnswers = [...Array(this.state.number).keys()].map(
       idx => event.target[idx].value);
+
     console.log('Question - submittedAnswers', submittedAnswers);
+    this.setState({submittedAnswers: submittedAnswers});
+
     const params = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -56,12 +63,10 @@ export default class Question extends Component {
         submittedAnswers: submittedAnswers
       })
     };
+
     fetch(rootUrl + '/result', params)
       .then(response => response.json())
-      .then(data => this.setState({
-        submittedAnswers: submittedAnswers, 
-        correctAnswers: data.correct_answers, 
-        result: data.result}))
+      .then(data => this.setState({result: data}))
   }
 
   getResultEmoji = (idx) => {
