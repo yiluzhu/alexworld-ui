@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import {rootUrl} from '../Config'
+import Ad from './Adsense'
 
 
 export default class Question extends Component {
@@ -108,6 +109,7 @@ export default class Question extends Component {
         <Link to='/'>
           <div className='text-right mt'>START AGAIN</div>
         </Link>
+        <div><Ad /></div>
         <h5 className='mt'>Difficulty: { this.state.difficulty }</h5>
         <h5 className='mt'>Number: { this.state.number }</h5>
         <div className='text-center'>
