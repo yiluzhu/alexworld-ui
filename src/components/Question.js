@@ -109,7 +109,7 @@ export default class Question extends Component {
         <Link to='/'>
           <div className='text-right mt'>START AGAIN</div>
         </Link>
-        <div><Ad /></div>
+        {/* <div><Ad /></div> */}
         <h5 className='mt'>Difficulty: { this.state.difficulty }</h5>
         <h5 className='mt'>Number: { this.state.number }</h5>
         <div className='text-center'>
